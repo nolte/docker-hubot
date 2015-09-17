@@ -6,16 +6,16 @@ redis:
    - "6379"
 
 
-#hubotscripts:
-#  image: busybox
-#  volumes:
-#   - ./hubot-scripts:/home/hubot/scripts
-#  command: "true"  
+hubotscripts:
+  image: busybox
+  volumes:
+   - ./hubot-scripts:/home/hubot/scripts
+  command: "true"  
 
 hubot:
   build: ./hubot-dockerfile
-#  volumes_from:
-#   - hubotscripts
+  volumes_from:
+   - hubotscripts
   links:
    - "redis:redishost"
   environment:
