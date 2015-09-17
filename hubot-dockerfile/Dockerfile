@@ -17,16 +17,16 @@ RUN yo hubot --owner="You" --name="HuBot" --description="HuBot on Docker" --defa
 
 RUN npm install hubot-irc --save && npm install
 
-#ToDO: http://stackoverflow.com/questions/30657596/remove-heroku-setting-from-hubot
+
+# remove heroku live check not needed for the docker file
 #RUN npm uninstall hubot-heroku-keepalive --save && npm install
-
-ENV HUBOT_IRC_SERVER=irc.freenode.net
-ENV HUBOT_IRC_ROOMS="#myhubot-irc"
-ENV HUBOT_IRC_NICK="hubibo"
+#RUN sed '/hubot-heroku-keepalive/d' ./external-scripts.json > ./external-scripts.json
 
 
-VOLUME /home/hubot/scripts
+#ENV HUBOT_IRC_SERVER=irc.freenode.net
+#ENV HUBOT_IRC_ROOMS="#myhubot-irc"
+#ENV HUBOT_IRC_NICK="hubibo"
 
-#COPY ./scripts/firstscript.coffee /home/hubot/scripts/firstscript.coffee
+#RUN less /home/hubot/scripts/example.coffee
 
 CMD bin/hubot -a irc --name myhubot

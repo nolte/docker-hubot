@@ -1,12 +1,26 @@
 #hubot docker compose file
-hubotscripts:
-  image: busybox
-  volumes:
-   - ./hubot-scripts:/home/hubot/scripts
-  command: "true"  
+#https://hub.docker.com/_/redis/
+redis:
+  image: redis:latest
+  expose: 
+   - "6379"
+
+
+#hubotscripts:
+#  image: busybox
+#  volumes:
+#   - ./hubot-scripts:/home/hubot/scripts
+#  command: "true"  
 
 hubot:
   build: ./hubot-dockerfile
-  volumes_from:
-   - hubotscripts
+#  volumes_from:
+#   - hubotscripts
+  links:
+   - "redis:redishost"
+  environment:
+   - HUBOT_IRC_NICK=hubibo
+   - HUBOT_IRC_ROOMS=#myhubot-irc
+   - HUBOT_IRC_SERVER=irc.freenode.net
+   - REDIS_URL=redis://redishost:6379
   
