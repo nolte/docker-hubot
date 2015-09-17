@@ -3,7 +3,8 @@
 #
 # Commands:
 #   hubot badger foo - say something
-#   <trigger> - <what the hear trigger does>
+#   hubot open the pod bay doors - say something
+#   hubot I like pie - say something
 #
 # Notes:
 #   first step
@@ -19,4 +20,4 @@ module.exports = (robot) ->
     res.reply "I'm afraid I can't let you do that."
 
   robot.hear /I like pie/i, (res) ->
-    res.emote "makes a freshly baked pie232"
+    res.emote "makes a freshly baked pie"
