@@ -1,0 +1,12 @@
+#hubot docker compose file
+hubotscripts:
+  image: busybox
+  volumes:
+   - ./hubot-scripts:/home/hubot/scripts
+  command: "true"  
+
+hubot:
+  build: ./dockerfiles
+  volumes_from:
+   - hubotscripts
+  
