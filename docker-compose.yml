@@ -6,7 +6,7 @@ hubotscripts:
   command: "true"  
 
 hubot:
-  build: ./dockerfiles
+  build: ./hubot-dockerfile
   volumes_from:
    - hubotscripts
   
